@@ -42,9 +42,9 @@ export default function Login({ history }) {
         Ofereça <strong>spots</strong> para programadores e encontre <strong>talentos</strong> para sua empresa
       </p>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="nome">NOME * </label>
+        <label htmlFor="name">NOME * </label>
         <input 
-          id="nome" 
+          id="name" 
           type="text"
           value={user.name} 
           placeholder="Como gostaria de ser chamado?"
@@ -60,9 +60,9 @@ export default function Login({ history }) {
           onChange={handleInputChange}
         />
 
-        <label htmlFor="senha">SENHA * </label>
+        <label htmlFor="password">SENHA * </label>
         <input 
-          id="senha" 
+          id="password" 
           type="password"
           value={user.password} 
           placeholder="Senha"

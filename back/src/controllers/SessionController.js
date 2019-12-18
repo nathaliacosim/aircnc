@@ -1,10 +1,12 @@
-const User = require('../models/User');
+const User = require("../models/User");
 
-module.exports = {
+class SessionController {
   async store(req, res) {
     const { email, password } = req.body;
-    let user = await User.findOne({ email })
-    if(!user){
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
       return res.status(400).json({ error: "User not found" });
     }
 
@@ -14,4 +16,6 @@ module.exports = {
 
     return res.json({ user, token: User.generateToken(user) });
   }
-};
+}
+
+module.exports = new SessionController();

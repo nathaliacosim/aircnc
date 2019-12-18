@@ -56,9 +56,9 @@ export default function Login({ history }) {
           onChange={handleInputChange}
         />
 
-        <label htmlFor="senha">SENHA * </label>
+        <label htmlFor="password">SENHA * </label>
         <input 
-          id="senha" 
+          id="password" 
           type="password"
           value={user.password} 
           placeholder="Senha"
