@@ -27,7 +27,7 @@ export default function Login({ history }) {
         login(token, userData);
       }
 
-      history.push("/index");
+      history.push("/dashboard");
     } catch (err) {
       toast.error("Email ou senha inválido!");
     }
