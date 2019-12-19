@@ -2,16 +2,14 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require("mongoose-paginate");
 
 const SpotSchema = new mongoose.Schema({
-  thumbnail: String,
+  //thumbnail: String,
   company: String,
   price: Number,
   techs: [String],
   user: {
-    salesman: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true
-    },
   }
 }, {
   toJSON: {
@@ -19,9 +17,9 @@ const SpotSchema = new mongoose.Schema({
   }
 });
 
-SpotSchema.virtual('thumbnail_url').get(function() {
+/*SpotSchema.virtual('thumbnail_url').get(function() {
   return `http://localhost:3030/files/${this.thumbnail}`;
-});
+});*/
 
 SpotSchema.plugin(mongoosePaginate);
 

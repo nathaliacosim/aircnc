@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
 import api from '../../../services/api';
 import { login } from "../../../services/auth";
@@ -66,6 +67,11 @@ export default function Login({ history }) {
         />
 
         <button className="btn" type="submit">Entrar</button>
+
+        <Link to="/signup">
+          <br/>
+          <button className="btn">Criar conta</button>
+        </Link>
       </form>
     </>
   );

@@ -12,7 +12,7 @@ const routes = express.Router();
 
 const authMiddleware = require("./middlewares/auth");
 
-const upload = multer(uploadConfig);
+//const upload = multer(uploadConfig);
 
 routes.post("/users", UserController.store);
 routes.post('/sessions', SessionController.store);
@@ -20,7 +20,7 @@ routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
 
 routes.get('/spots', SpotController.index);
-routes.post('/spots', upload.single('thumbnail'), SpotController.store);
+routes.post('/spots', SpotController.store);
 routes.get('/dashboard', DashboardController.show);
 
 routes.post('/spots/:spot_id/bookings', BookingController.store);

@@ -1,13 +1,13 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { toast } from "react-toastify";
 import api from '../../services/api';
 
-import camera from '../../assets/camera.svg';
+//import camera from '../../assets/camera.svg';
 import './styles.css';
 
 export default function New({ history }) {
   const [spot, setSpot] = useState({
-    thumbnail: "",
+    //thumbnail: "",
     company: "",
     price: "",
     techs: ""
@@ -16,7 +16,8 @@ export default function New({ history }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await api.post(`/spots`, spot);
+      console.log("Entrou")
+      await api.post('/spots', spot);
       history.push("/dashboard");
     } catch (err) {
       toast.error("Erro ao cadastrar produto!");
@@ -31,23 +32,9 @@ export default function New({ history }) {
     });
   }
 
-  const preview = useMemo(
-    () => {
-      return spot.thumbnail ? URL.createObjectURL(spot.thumbnail) : null;
-    },
-    [spot.thumbnail]
-  );
-
   return (
     <form onSubmit={handleSubmit}>
-      <label 
-        id="thumbnail" 
-        style={{ backgroundImage: `url(${preview})` }}
-        className={spot.thumbnail ? 'has-thumbnail' : ''}  
-      >
-        <input type="file" value={spot.thumbnail} onChange={handleInputChange}/>
-        <img src={camera} alt="Select img"/>
-      </label>
+      
 
       <label htmlFor="company">EMPRESA *</label>
       <input 
@@ -73,7 +60,7 @@ export default function New({ history }) {
         onChange={handleInputChange}
       />
 
-      <button className="btn" type="submit">Salvar</button>
+      <button className="btn" type="submit" onClick={handleSubmit}>Salvar</button>
     </form>
   );
 }
